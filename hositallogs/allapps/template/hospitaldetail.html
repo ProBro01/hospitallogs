@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+| {{ user.name }}
+
+{% endblock %}
+
+{% block content %}
+<div class="hos-det">
+    <div style="border: none; display: flex; flex-direction: row;">
+        <div>
+            <img src="/media/{{ user.hospitalimage }}" height="300px" width="400px" style="box-shadow: 0px 0px 10px rgb(0, 153, 255);">
+        </div>
+        <div style="margin:10px">
+            <ul>
+            <li style="list-style-type: none;">{{ user.name }}</li>
+            <li style="list-style-type: none;">{{ user.Location.address }}</li>
+            <li style="list-style-type: none;">{{ user.Location.city }}</li>
+            <li style="list-style-type: none;">{{ user.Location.pincode }}</li>
+            <li style="list-style-type: none;">{{ user.fees }}</li>
+            <li style="list-style-type: none;">{{ user.discriptions }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="mycontainer" style="margin: 30px;">
+        {% for var in doctorlist %}
+
+        <div class="card" style="width: 18rem; box-shadow: 0px 0px 20px black;">
+            <div>
+                <img class="card-img-top" src="/media/{{ var.picture }}" alt="Not Available">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ var.Name }}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's
+                    content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Qualification : {{ var.Qualification }}</li>
+                <li class="list-group-item">Specilication : {{ var.Specilization }}</li>
+                <li class="list-group-item">Experience : {{ var.experience }}</li>
+                <li class="list-group-item">Startingtime : {{ var.startingtime }}</li>
+                <li class="list-group-item">Endingtime : {{ var.endingtime }}</li>
+                <li class="list-group-item">Rating : {{ var.ratings }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

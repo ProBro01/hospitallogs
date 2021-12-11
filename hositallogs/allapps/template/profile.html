@@ -1,0 +1,258 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+
+| Profile
+
+{% endblock %}
+
+{% block content %}
+<div class="myflex3">
+    <div class="signout-prompt myflex justifier"><a class="signout-prompt-p" style="text-decoration: none;" href="/logout/"></a></div>
+    <form method="POST" action="/editprofile/" id="editform">
+        {% csrf_token %}
+        <ul style="padding: 0px;">
+            <!-- setting the top banner of the profile page -->
+            <div class="profile-up-back gridforprofile justifier">
+                <div class="justifier myflex">
+                    <h1 id="hospitalname" style="color: white;">
+                        {{ user.name }}
+                    </h1>
+                </div>
+                <img src="/media/{{ user.hospitalimage }}" class="hospital-img">
+            </div>
+            <!-- top banner done -->
+            <!-- <div style="display:flex">
+                <img src="/static/editpencile.png" height="30" width="30" onclick="changename()">
+            </div> -->
+            <div class="myflex justifier" style="align-items: center;">
+                <div class="" style="width: 600px;">
+                    <div class="profile-change-option justifier" style="background-color: rgb(221, 219, 219); box-shadow:0px 0px 10px green;">
+                        <div class="myflex justifier">
+                            <span>Username : </span>
+                        </div>
+                        <div>
+                            <input type="text" value="{{ user.username }}" class="my-input-profile" name="usernameedit">
+                        </div>
+                        <div class="myflex">
+                            <span class="" id="">Address : </span>
+                        </div>
+                        <div class="">
+                            <input type="text" class="my-input-profile" value="{{ user.Location.address }}"
+                                name="addressedit">
+                        </div>
+                        <div class="myflex">
+                            <span class="" id="">City : </span>
+                        </div>
+                        <div class="">
+                            <input type="text" class="my-input-profile" value="{{ user.Location.city }}"
+                                name="cityedit">
+                        </div>
+                        <div>
+                            <span class="myflex " id="">Pincode : </span>
+                        </div>
+                        <div class="">
+                            <input type="text" class="my-input-profile" value="{{ user.Location.Pincode }}"
+                                name="pincodeedit">
+                        </div>
+                        <div class="myflex">
+                            <span>Fees : </span>
+                        </div>
+                        <div>
+                            <input type="text" class="my-input-profile" value="{{ user.fees }}" name="feeedit">
+                        </div>
+                        <div class="myflex">
+                            <span>Number Of Beds : </span>
+                        </div>
+                        <div>
+                            <input type="number" class="my-input-profile" value="{{ user.numberofbeds }}"
+                                name="numberofbedsedit">
+                        </div>
+                        <div class="myflex">
+                            <span>Discription : </span>
+                        </div>
+                        <div>
+                            <textarea name="discriptionedit" id="hospitaldiscription" cols="30"
+                                rows="10">{{ user.discriptions }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </form>
+    {% for var in doctorlist %}
+
+    <div class="card mb-3" id="{{ var.id }}">
+        <button class="btn btn-warning mb-2" onclick="removedoctor({{ var.id }})">Remove Doctor</button>
+        <div class="card-body">
+            <ul>
+                <li>Name : {{ var.Name }}</li>
+                <li>Qualification : {{ var.Qualification }}</li>
+                <li>Specilication : {{ var.Specilization }}</li>
+                <li>Experience : {{ var.experience }}</li>
+                <li>Startingtime : {{ var.startingtime }}</li>
+                <li>Endingtime : {{ var.endingtime }}</li>
+            </ul>
+        </div>
+    </div>
+
+    {% endfor %}
+    <div id="doctorlist"></div>
+    <!-- add button -->
+    <div class="mb-3">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Doctor
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Doctor</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingdocname" placeholder="name" autofocus>
+                            <label for="floatingendtiming">Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingsubject" placeholder="Subject">
+                            <label for="floatingendtiming">Specilization</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingqualification" placeholder="quali">
+                            <label for="floatingendtiming">Qualification</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingexp" placeholder="Experience">
+                            <label for="floatingexperience">Experience</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="time" class="form-control" id="floatingstarttiming" placeholder="start timing">
+                            <label for="floatingstarttiming">Start Timing</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="time" class="form-control" id="floatingendtiming" placeholder="end timing">
+                            <label for="floatingendtiming">Last Seen at</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="addDoctor()" id="adddoctor">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/logout/"><button type="button" class="btn btn-danger">Logout</button></a>
+    <button class="btn btn-success" type="submit" form="editform">Save Changes</button>
+</div>
+<script>
+    // creating a xmlhttprequest to send the data
+    function idgenerator(doctor) {
+        doctorlist
+    }
+    var doctorelementid = []
+    var ids = ["floatingdocname", "floatingsubject", "floatingqualification", "floatingexp", "floatingstarttiming", "floatingendtiming"]
+    class Doctor {
+        constructor(name, qualification, specilization, experience, starttime, endtime) {
+            this.name = name;
+            this.specilization = specilization;
+            this.qualification = qualification;
+            this.experience = experience;
+            this.starttime = starttime;
+            this.endtime = endtime;
+        }
+    }
+    // contain the json that send data of doctor
+
+    function registerdoctor(name, qualification, specilization, experience, starttime, endtime) {
+        doc = new Doctor(name, qualification, specilization, experience, starttime, endtime)
+        doctorjsondata = { "name": name, "specilization": specilization, "qualification": qualification, "experience": experience, "starttime": starttime, "endtime": endtime }
+        doctorjsondata = JSON.stringify(doctorjsondata)
+        xhttp.send(doctorjsondata)
+    }
+
+    function addDoctor() {
+        // for registring the doctor
+        xhttp = new XMLHttpRequest()
+        xhttp.onload = function () {
+            document.getElementById("adddoctor").disabled = false
+        }
+        xhttp.open("POST", "/editdoctor/", true)
+        xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+        // disable the button 
+        document.getElementById("adddoctor").disabled = true
+        // list containg the all the tag in a card
+        var element = [];
+        // create all elements
+        element[0] = document.getElementById("doctorlist");// getting the parent element
+        element[1] = document.createElement("div")
+        element[1].setAttribute("class", "card mb-3")
+        element[2] = document.createElement("div")
+        element[2].setAttribute("class", "card-body")
+        element[3] = document.createElement("ul")
+        for (var a = 4; a <= 9; a++) {
+            element[a] = document.createElement("li")
+        }
+        var listelements = [] // store value of the doctor fields
+        for (var a = 4; a <= 9; a++) {
+            listelements[a - 4] = document.getElementById(ids[a - 4]).value
+            element[a].appendChild(document.createTextNode(listelements[a - 4]))
+            element[3].appendChild(element[a])
+        }
+        // creating remove button
+        removebutton = document.createElement("button")
+        removebutton.setAttribute("class", "btn btn-warning mb-2")
+        removebutton.setAttribute("onclick", "removedoctor()")
+        removebutton.appendChild(document.createTextNode("Remove Doctor"))
+        element[1].append(removebutton)
+        // appending start
+        element[1].appendChild(element[2])
+        element[2].appendChild(element[3])
+        element[0].appendChild(element[1])
+
+        /*
+        CLEARING TRACKS
+        clearing the filled inputs
+        */
+        for (var a = 0; a <= 5; a++) {
+            document.getElementById(ids[a]).value = ''
+        }
+        registerdoctor(listelements[0], listelements[1], listelements[2], listelements[3], listelements[4], listelements[5])
+    }
+
+    function removedoctor(doctorid) {
+        // for removing the doctor
+        xhttp2 = new XMLHttpRequest()
+        xhttp2.onload = function () {
+            console.log("revcived")
+        }
+        xhttp2.open("POST", "/removedoctor/", true)
+        xhttp2.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+        var form = new FormData()
+        form.append("doctorid", doctorid)
+        xhttp2.send(form)
+        document.getElementById(doctorid).remove()
+    }
+    function signoutpromptf(){
+        var signoutprompt = document.querySelectorAll('.signout-prompt')[0]
+        var signoutpromptp = document.querySelectorAll('.signout-prompt-p')[0]
+        signoutprompt.addEventListener("mouseover", function(){
+      setTimeout(function(){
+      if(signoutprompt.clientWidth == 70){
+        signoutpromptp.innerHTML = 'Sign Out'
+        signoutpromptp.style.color="white"
+      }
+    }, 290)
+    })
+    signoutprompt.addEventListener('mouseleave', function(){
+        signoutpromptp.innerHTML = ''
+    })
+    }
+    signoutpromptf()
+</script>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% if shownavbar == 1 %}
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning" style="color: white; position: static;z-index: 1000;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Logs</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register/">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="enhancedsearch" onclick="showsearchform()">Enhanced Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutus/" id="aboutus">About Us</a>
+                    </li>
+                    <div class="mymodal-bg" id="mywholemodal">
+                        <div class="mymodal" id="underwholemodal">
+                            <h1 style="color: black;">Search hospital InDetail</h1>
+                            <form method="POST" action="/searchform/">
+                                {% csrf_token %}
+                                <div class="form-floating mb-3 mt-4">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="Hospital Name" ,
+                                    name="searchname">
+                                    <label for="floatingInput">Hospital Name</label>
+                                </div>
+                                <div class="form-floating mb-3 mt-4">
+                                    <input type="text" class="form-control" id="floatinglocation" placeholder="Hospital location" ,
+                                    name="searchcity">
+                                    <label for="floatingInput">City</label>
+                                </div>
+                                <div class="form-floating mb-3 mt-4">
+                                    <input type="text" class="form-control" id="floatingproblem" placeholder="Hospital Name" ,
+                                    name="searchproblem">
+                                    <label for="floatingproblem">problem</label>
+                                </div>
+                                <button type="button" class="btn btn-secondary" onclick="closesearchform()">Close</button>
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </ul>
+                <form class="d-flex" action="/searchresult/" method="GET">
+                    {% csrf_token %}    
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchquery">
+                    <button class="btn btn-outline-warning" type="submit"
+                        style="color: white; border: 1px solid black;">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <script>
+        window.addEventListener("keydown", function(event){
+            var x = event.keyCode
+            if (x == 27){
+                document.getElementById("mywholemodal").style.visibility = "hidden";
+            }
+        })
+        function showsearchform(){
+            document.getElementById("mywholemodal").style.visibility = "visible";
+        }
+        function closesearchform(){
+            document.getElementById("mywholemodal").style.visibility = "hidden";
+        }
+    </script>
+    {% endblock %}
+{% endif %}

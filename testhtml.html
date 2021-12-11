@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning CSS</title>
+  <style>
+    *{
+      margin: 0px;
+    }
+    #customer {
+      display: none;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #customer td,
+    #customer th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #customer tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customer tr:hover {
+      background-color: #ddd;
+    }
+
+    #tableheading {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 10px;
+    }
+
+    #customer th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #0439aa;
+      color: white
+    }
+
+    #tablebutton {
+      margin-bottom: 5px;
+      padding: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #searchbutton{
+      padding: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #tablebutton:hover {
+      background-color: rgb(207, 16, 16);
+      cursor: grab;
+    }
+
+    #tablebutton:active {
+      cursor: grabbing;
+    }
+
+    #max-lengthtest {
+      display: inline-block;
+      max-width: 500px;
+      min-width: 250px;
+      max-height: 650px;
+      min-height: 100px;
+      text-align: justify;
+      text-align-last: justify;
+      overflow-y: scroll;
+      overflow-x: scroll;
+    }
+
+    #statisticstable {
+      max-width: 500px;
+      min-width: 250px;
+      max-height: 650px;
+      min-height: 100px;
+      display: inline-block;
+    }
+
+    #navbardiv{
+      background-color: rgb(34, 35, 36);
+      min-height: 50px;
+      margin-bottom: 10px;
+    }
+    #navbar {
+    }
+    
+    #navlistitem {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-family: 'Fjalla One', sans-serif;
+      display: inline;
+      color: white;
+      padding-right: 15px;
+      padding-left: 10px;
+      list-style-type: none;
+    }
+
+    #navlistitem:hover{
+      background-color: white;
+      color: black;
+    }
+
+    #listul{
+      margin-top: 15px;
+      padding-top: 15px;
+      display: inline;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbardiv">
+    <nav id="navbar">
+      <ul id="listul">
+        <li id="navlistitem"><span id="listincont">Contact us</span></li>
+        <li id="navlistitem"><span id="listincont">Login</span></li>
+        <li id="navlistitem"><span id="listincont">Register</span></li>
+        <li id="navlistitem"><span id="listincont">Terms and conditions</span></li>
+      </ul>
+      <div style="display: inline; float: right;">
+      <button type="button" id="searchbutton">Search</button>
+      </div>
+    </nav>
+  </div>
+  <div style="position: fixed; bottom: 0; right: 0;">This is the div tag of fixed position</div>
+  <div>
+  <h1>This is a responsive table</h1>
+  </div>
+  <button type="button" onclick="showtable()" id="tablebutton">Show Statistics</button>
+  <div style="overflow-x: auto;overflow-y: auto; display: flex;">
+    <div id="max-lengthtest">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorum neque quia aliquid repudiandae laboriosam,
+      asperiores saepe molestiae numquam officiis minima dolorem fuga ullam quis similique reprehenderit magnam. Dolorum
+      ratione nostrum itaque doloribus eaque quae nisi iste quaerat animi alias hic nobis laudantium, porro sed
+      provident optio natus ea dolor dignissimos doloremque iure. Ad, assumenda et! Expedita reprehenderit ipsam quod
+      dolore totam a ullam mollitia cumque in nesciunt suscipit dolor praesentium nobis sunt similique neque deserunt
+      modi magni explicabo, nihil consectetur recusandae, id eligendi? Temporibus pariatur vero quaerat id recusandae,
+      ratione laboriosam maxime, architecto eligendi ullam aperiam reiciendis dolorem in ad expedita et ex placeat optio
+      magnam corporis voluptas sint veniam quibusdam. Vitae soluta, unde facere iste cumque, totam esse mollitia quis in
+      hic, earum eius. Natus soluta quos quibusdam accusamus adipisci culpa dolor quia! Voluptatibus ratione ipsam
+      debitis ex dolores! Laudantium aut maxime, id facilis adipisci voluptatibus obcaecati autem, rerum officia,
+      dignissimos nisi odit dicta praesentium quidem numquam ipsum animi labore placeat est? Culpa velit neque
+      accusantium odit placeat magni laborum obcaecati? Vel vero omnis reiciendis fugit totam, enim dolor quo eligendi
+      quae facere recusandae quasi quibusdam delectus in. Iste, odio illum. Animi perferendis sed officia necessitatibus
+      quod. Deserunt obcaecati architecto doloribus ea consectetur, quos eaque! Itaque illo sed adipisci distinctio,
+      eius laboriosam dicta minima nisi rerum aliquam veniam aspernatur maxime qui deserunt totam libero dignissimos
+      minus quisquam recusandae praesentium dolores blanditiis eum odit.
+    </div>
+    <div id="statisticstable">
+      <table id="customer">
+        <tr id="tableheading">
+          <th>Company</th>
+          <th>Contact</th>
+          <th>Country</th>
+          <th>hello</th>
+          <th>hello</th>
+          <th>hello</th>
+          <th>hello</th>
+          <th>hello</th>
+          <th>hello</th>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Berglunds snabbköp</td>
+          <td>Christina Berglund</td>
+          <td>Sweden</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Centro comercial Moctezuma</td>
+          <td>Francisco Chang</td>
+          <td>Mexico</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Ernst Handel</td>
+          <td>Roland Mendel</td>
+          <td>Austria</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Island Trading</td>
+          <td>Helen Bennett</td>
+          <td>UK</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Königlich Essen</td>
+          <td>Philip Cramer</td>
+          <td>Germany</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Laughing Bacchus Winecellars</td>
+          <td>Yoshi Tannamuri</td>
+          <td>Canada</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Magazzini Alimentari Riuniti</td>
+          <td>Giovanni Rovelli</td>
+          <td>Italy</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>North/South</td>
+          <td>Simon Crowther</td>
+          <td>UK</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+        <tr>
+          <td>Paris spécialités</td>
+          <td>Marie Bertrand</td>
+          <td>France</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+          <td>hello</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script>
+    var is_tableon = 0 // table is of
+    function showtable() {
+      if (is_tableon == 0) {
+        document.getElementById("customer").style.display = "inline-block"
+        is_tableon = 1
+      }
+      else {
+        document.getElementById("customer").style.display = "none"
+        is_tableon = 0
+      }
+    }
+  </script>
+</body>
+
+</html>

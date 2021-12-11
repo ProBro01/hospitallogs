@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Registration done</h1>
+<h4>Your Username and Password will be shown only once</h4>
+<div id="credentials">
+<p id="credentialsuser">Username : {{ username }}</p>
+<p id="credentialspass">Password : {{ password }}</p>
+</div>
+<button onclick="copping()" style="border: none;"><img src="/static/clipboard.png" height="30" width="30"></button>
+<label for="copytoclipboard">Copy To clipboard</label><br>
+<a href="/">Go to home page</a>
+
+<script>
+     function copping(){
+        username = document.getElementById("credentialsuser").innerHTML
+        password = document.getElementById("credentialspass").innerHTML
+        navigator.clipboard.writeText(username+"\n"+password);
+    }
+</script>
+
+{% endblock %}

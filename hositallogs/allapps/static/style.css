@@ -1,0 +1,328 @@
+.top-taker{
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  position: fixed;
+  bottom: 500px;
+  z-index: 2000;
+  height: 50px;
+  width: 20px;
+  background-color: rgba(0,0,0,0.5);
+  transition: width 0.3s;
+}
+.top-taker:hover{
+  transition: width 0.3s;
+  width: 70px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.mymodal-bg{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+    z-index: 2000;
+  }
+  .mymodal{
+    box-shadow: 0px 0px 5px white;
+    background-color: white;
+    color: black;
+    max-width: 700px;
+    max-height: 600px;
+    width: 700px;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  .myflex{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .myflexbutton{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .myflex-dim-whole{
+    width: 25.0rem;
+    max-width: 37.5rem;
+    height: 28.125rem;
+  }
+
+  .myflex-dim-part{
+    max-width: 21.875rem;
+    justify-content: space-around;
+  }
+
+  .r-myflex-bg{
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    margin: 90px 0px 90px 0px;
+    box-shadow: 0px 0px 10px black;
+    background-color: rgba(240, 240, 240, 0.7);
+  }
+
+  .labelclass{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+  }
+
+  #loginbutton{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .forgotpass{
+    margin-right: 10px;
+  }
+
+  .fplink{
+    color: rgb(38, 38, 192);
+    font-weight: bold;
+  }
+
+  .inputfield{
+    margin: 10px;
+  }
+  /* ----------------in base.html page---------------- */
+  .mycontainer{
+    height: auto;
+    width: auto;
+    display: grid;
+    row-gap: 10px;
+    column-gap: 30px;
+    grid-template-columns: auto auto auto;
+  }
+  .mycontainer2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .myborder{
+    margin: 30px;
+    border-left: 1px solid rgb(131, 125, 125);
+    justify-content: center;
+    align-items: center;
+  }
+  .myborder > ul > li{
+    color:rgb(185, 177, 177)
+  }
+  .myborder > ul > li:hover{
+    color: white;
+  }
+  .justifier{
+    justify-content: center;
+  }
+  .myendborder{
+    border-left: 1px solid rgb(131, 125, 125);
+    margin: 30px;
+    align-items: center;
+  }
+  .myfrontborder{
+    margin: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  .myendborder > ul > li{
+    color: rgb(185, 177, 177)
+  }
+  .myendborder > ul > li:hover{
+    color: white;
+  }
+  .hos-det{
+    margin: 20px;
+  }
+  .footer{
+    background-color: #110f11;
+    height: 200px;
+    width: 100%;
+  }
+
+  /* --------------in index.html page--------------------- */
+
+.heartpump{
+    margin: 50px;
+    background-image: url("/static/pumpingheart.png");
+    height: 450px;
+    width: 350px;
+    background-size: cover;
+    animation: pumping 1s infinite;
+}
+.making-visible{
+    visibility: hidden;
+}
+.animating{
+    color: black;
+    animation: fadein 1.5s 1;
+}
+
+@keyframes fadein{
+    0% {opacity: 0;
+    top:-20px}
+    100% {opacity: 1;
+    top:0px}
+}
+@keyframes pumping{
+    0% {height: 450px;
+    width: 350px;}
+    50% {
+        height: 470px;
+        width: 370px;
+    }
+    100% {
+        height: 450px;
+        width: 350px;
+    }
+}
+
+/* ------------ in about us page---------------- */
+#close-ico{
+  cursor: pointer;
+}
+.heading-about-us{
+  margin: 0px;
+  padding: 20px 0px 20px 0px;
+}
+.head-div{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.main-cont{
+  padding: 0px 70px 0px 60px;
+}
+.mycontainer3{
+  display: grid;
+  grid-template-columns: 15vw 55vw auto;
+  column-gap: 50px;
+}
+.mycontainer3 > p{
+  max-width: 50vw;
+}
+.mycontainer3 > div{
+  box-shadow: 0px 0px 10px black;
+  padding: 0px 0px 0px 7px;
+  background-color: #f2f2f2;
+}
+.mycontainer > div > ul{
+  margin: 0px;
+  padding: 0px;
+}
+.mycontainer3 > div > h3{
+  position: relative;
+  top: 0px;
+}
+.cont-div{
+  padding: 20px 0px 20px 0px;
+}
+.backanimate{
+  animation: fadein 1s 1;
+}
+.animate4{
+  animation: fadein 4s 1;
+}
+.myflex2{
+  display: flex;
+  flex-direction: row;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.mycontainer4{
+  display: grid;
+  grid-template-columns: auto 3vw;
+}
+.list-animation{
+  animation: listani 4s 1;
+}
+@keyframes listani{
+  0% {opacity: 0;
+  left:-30px}
+  100% {opacity: 1;
+  left:0px}
+}
+@keyframes fadein{
+  0% {opacity: 0;
+  top:-10px}
+  100% {opacity: 1;
+  top:0px}
+}
+li{
+  list-style: none;
+  margin: 5px;
+}
+p{
+  text-align: justify;
+}
+/* --------------- css for login page ------------------ */
+.login-div{
+  display: flex;
+  align-items: center;
+}
+
+/* -------------- css for profile page -------------------- */
+.hospital-img{
+  position: relative;
+  top: 0px;
+  height: 200px;
+  width: 250px;
+  border-radius: 50%;
+}
+.profile-up-back{
+  height: 200px;
+  width: 99.1vw;
+  background-image : linear-gradient(to bottom right, #5e6696, #151e52);
+}
+.gridforprofile{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 50% 50%;
+}
+.profile-change-option{
+  margin: 100px 0px 0px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  /* grid-template-rows: ; */
+}
+.my-input-profile{
+  height: 50px;
+  width: 200px;
+  border-top: 5px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid rgb(235, 131, 235);
+  transition: border 0.5s linear;
+  transition: width 0.5s linear;
+}
+.my-input-profile:focus {
+  width: 250px;
+  border-bottom: 2px solid purple;
+}
+.signout-prompt{
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 50px;
+  width: 20px;
+  position: fixed;
+  z-index: 2000;
+  bottom: 450px;
+  background-color: rgba(221, 52, 52, 0.5);
+  transition: width 0.3s;
+}
+.signout-prompt:hover{
+  transition: width 0.3s;
+  width: 70px;
+  background-color: rgba(221, 52, 52, 0.9);
+}

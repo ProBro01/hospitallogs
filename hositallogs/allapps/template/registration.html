@@ -1,0 +1,284 @@
+{% extends "navbar.html" %}
+
+{% block title %}
+
+| Registration
+
+{% endblock %}
+
+{% block content %}
+<div id="maincontent">
+    <div class="container mt-4">
+        <h1>Register Hospital</h1>
+    </div>
+    <div>
+        <form method="POST" , action="/registerdoc/" id="hospitalform">
+            {% csrf_token %}
+            <div class="container border mt-4">
+                <div class="form-floating mb-3 mt-4">
+                    <input type="text" class="form-control" id="floatingName" placeholder="Hospital Name"
+                    name="hospitalname">
+                    <label for="floatingName">Hospital Name</label>
+                </div>
+                <div class="form-floating mb-3 mt-4">
+                    <input type="text" class="form-control" id="floatingemailid" placeholder="Hospital id" name="emailid">
+                    <label for="floatingemail">Email id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingLocation" placeholder="Location"
+                    name="location">
+                    <label for="floatingLocation">Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingcity" placeholder="city"
+                    name="city">
+                    <label for="floatingcity">City</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingpincode" placeholder="pincode"
+                    name="pincode">
+                    <label for="floatingpincode">Pincode</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingfees" placeholder="fee" name="ticketfees">
+                    <label for="floatingfees">Registration Fees</label>
+                </div>
+                <div id="docterlist" class="mb-3">
+                </div>
+                <!-- add button -->
+                <div class="mb-3">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Doctor
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Doctor</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-floating mb-3">
+                                      <input type="text" class="form-control" id="floatingdocname" placeholder="name" autofocus>
+                                        <label for="floatingendtiming">Name</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="floatingsubject"
+                                            placeholder="Subject">
+                                        <label for="floatingendtiming">Specilization</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="floatingqualification"
+                                            placeholder="quali">
+                                        <label for="floatingendtiming">Qualification</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="floatingexp"
+                                            placeholder="Experience">
+                                        <label for="floatingexperience">Experience</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="time" class="form-control" id="floatingstarttiming"
+                                            placeholder="start timing">
+                                        <label for="floatingstarttiming">Start Timing</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="time" class="form-control" id="floatingendtiming"
+                                            placeholder="end timing">
+                                        <label for="floatingendtiming">Last Seen at</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="addDocter()">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3 row mx-auto">
+                <!-- add button done -->
+                    <button class="btn btn-success col" type="button" onclick="convertinjson()" id="registrationbutton">Register</button>
+                </div>
+        </form>
+    </div>
+</div>
+{% csrf_token %}
+<script>
+    /*
+    method (when docter is added to the list):-
+        1. check the filled blocks
+        2. create the card for each docter
+        3. register the docter by creating the object
+        4. add the docter to the docterspresent array
+        method (when clicked on the register button):
+        1. iterate over the docterspresent list
+        2. make a dictionary which contain the docter details
+        3. add the dictonary to the doctorjsondata list
+        4. after completing the list convert the list into string
+        5. send that list to the backend for registration
+        */
+    var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value
+    var ids = ["floatingdocname", "floatingsubject", "floatingqualification", "floatingexp", "floatingstarttiming", "floatingendtiming"]
+    var hospitaldetailsid = ["floatingName", "floatingemailid", "floatingLocation", "floatingcity", "floatingpincode", "floatingfees"]
+    doctorspresent = []
+    doctorjsondata = []
+    class Doctor {
+        constructor(name, specilization, qualification, experience, starttime, endtime) {
+            this.name = name;
+            this.specilization = specilization;
+            this.qualification = qualification;
+            this.experience = experience;
+            this.starttime = starttime;
+            this.endtime = endtime;
+        }
+
+        // see object information
+        getInforamtion() {
+            console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+            console.log(this.name)
+            console.log(this.experience)
+            console.log(this.specilization)
+            console.log(this.starttime)
+            console.log(this.endtime)
+            console.log(this.qualification)
+        }
+    }
+
+    function checkfills() {
+        for (var a = 0; a <= 5; a++) {
+            if (document.getElementById(ids[a]).value == '') {
+                alert("Unfilled Entry ".concat(ids[a]));
+                return false
+            }
+        }
+        return true
+    }
+
+    function createdocterobj(name, specilization, qualification, experience, starttime, endtime) {
+        doc = new Doctor(name, specilization, qualification, experience, starttime, endtime)
+        doctorspresent.push(doc)
+        return doctorspresent.length
+    }
+
+    function addDocter() {
+        /*
+            method for removing:-
+                after clicking on add the doctor object is created
+                the doctor object is then pushed in the array
+                the length of the array is then placed as the id of the card element
+                removedoc() recive the id and delete the doctor card
+                and then change the id of all the remaining card element
+        */
+
+        // fill check
+        if (checkfills()) {
+            var element = [];
+            // creating all elements
+            element[0] = document.getElementById("docterlist");
+            element[1] = document.createElement("div")
+            element[1].setAttribute("class", "card mb-3")
+            element[2] = document.createElement("div")
+            element[2].setAttribute("class", "card-body")
+            element[3] = document.createElement("ul")
+            for (var a = 4; a <= 9; a++) {
+                element[a] = document.createElement("li")
+            }
+            // list containg the elements filled in modal
+            var listelements = []
+            /*
+            taking the doctor field value
+            creating a text node and appending it to the list
+            append list element to the ul element
+            */
+            for (var a = 4; a <= 9; a++) {
+                listelements[a - 4] = document.getElementById(ids[a - 4]).value
+                element[a].appendChild(document.createTextNode(listelements[a - 4]))
+                element[3].appendChild(element[a])
+            }
+            /*
+            CLEARING TRACKS
+            clearing the filled inputs
+            */
+           for (var a = 0; a <= 5; a++) {
+               document.getElementById(ids[a]).value = ''
+            }
+            indexidL = createdocterobj(listelements[0], listelements[1], listelements[2], listelements[3], listelements[4], listelements[5])
+            element[1].setAttribute("id", indexidL)
+            removebutton = document.createElement("button")
+            removebutton.setAttribute("class", "btn btn-warning mb-2")
+            removebutton.setAttribute("type", "button")
+            removebutton.setAttribute("onclick", "removedoctor".concat("(", indexidL, ")"))
+            removebutton.appendChild(document.createTextNode("Remove Doctor"))
+            element[1].appendChild(removebutton)
+            // appending start
+            element[1].appendChild(element[2])
+            element[2].appendChild(element[3])
+            element[0].appendChild(element[1])
+        }
+    }
+
+    function removedoctor(id){
+        // getting the index
+        index = id - 1
+        // delete element
+        delete doctorspresent[index]
+        console.log(id)
+        document.getElementById(id).remove()
+        for (var a = id + 1; a <= doctorspresent.length; a++){
+            document.getElementById(a).setAttribute("id", a-1)
+        }
+    }
+
+    function checkhospitaldetails() {
+        for (var a = 0; a <= 2; a++) {
+            console.log(hospitaldetailsid[a].value)
+            if (document.getElementById(hospitaldetailsid[a]).value == '') {
+                alert("Unfilled Entry ".concat(hospitaldetailsid[a]));
+                return false
+            }
+        }
+        return true
+    }
+
+    function convertinjson() {
+        document.getElementById("registrationbutton").disabled = true;
+        if (checkhospitaldetails()) {
+            for (var a = 0; a < doctorspresent.length; a++) {
+                doctorjsondata[a] = { "name": doctorspresent[a].name, "specilization": doctorspresent[a].specilization, "qualification": doctorspresent[a].qualification, "experience": doctorspresent[a].experience, "starttime": doctorspresent[a].starttime, "endtime": doctorspresent[a].endtime }
+            }
+            doctorjsondata.push({ "hospital name": document.getElementById("floatingName").value, "Email id" : document.getElementById("floatingemailid").value, "Location": document.getElementById("floatingLocation").value, "fees": document.getElementById("floatingfees").value, "city" : document.getElementById("floatingcity").value, "pincode" : document.getElementById("floatingpincode").value })
+            doctorjsondata = JSON.stringify(doctorjsondata)
+            sendwholedata(doctorjsondata)
+        }
+    }
+
+    function sendwholedata(datatosend) {
+        var xhttp = new XMLHttpRequest()
+        xhttp.onload = function () {
+            document.getElementById("maincontent").innerHTML = this.responseText
+            document.getElementsByTagName('BODY')[0].style.backgroundImage="linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,1))"
+            document.getElementsByTagName('BODY')[0].style.backgroundRepeat="no-repeat"
+        }
+        xhttp.open("POST", "/registerdocs/", true)
+        xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8")
+        xhttp.setRequestHeader("X-CSRFToken", csrftoken)
+        xhttp.send(datatosend)
+    }
+
+    function copping(){
+        username = document.getElementById("credentialsuser").innerHTML
+        password = document.getElementById("credentialspass").innerHTML
+        navigator.clipboard.writeText(username+"\n"+password);
+    }
+
+</script>
+
+{% endblock %}

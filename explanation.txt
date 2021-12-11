@@ -1,0 +1,27 @@
+bed wala feature to tell the remaing beds in a hospital
+undo changes ka option
+profile pic edit
+name edit karne ka feature
+remove karne se pahale alert hoga
+---------------------------add the feature of auto email send when user logs in for security reason
+---------------------------add the two factor authentication as otp on email
+add appliers as customers
+cart ka feature jisme ham applier previous details ko rekenge
+hospital mein parchi katne ka feature
+    hospital ke pass parchi ki details jaegi
+    if approved and confirmed from applier:
+        payment bhi hoga
+        aapke pass ek rasiid banke aaegi aur wo rasiid aap print kar sakte ho ya pdf mein download kar sakete ho
+    else:
+        Hospital is not registering you request
+search ko aur specified bane hai    
+    location search add karna hai
+    name of doctor search add karna hai
+    problem search form add karna hai
+make changes in Doctors Details
+
+
+
+=========================================================================================================
+after the otp check and login clear the otp to null in the session id and also clear the is_semiauthentic
+=========================================================================================================

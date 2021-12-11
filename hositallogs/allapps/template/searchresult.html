@@ -1,0 +1,48 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+
+| search
+
+{% endblock %}
+
+{% block content %}
+{% if haveresult == 1 %}
+<div style="background-color: #f2f2f2; display: flex; justify-content: center; flex-direction: column;">
+  {% for var in hospital %}
+  <div style="display: flex; justify-content: center;">
+    <div class="card mb-4" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;" id="{{var.id}}">
+      <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ var.name }}</h5>
+        <div class="card-text">
+          <ul>
+            <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{ var.Location.Pincode }}</li>
+            <li>Fees : {{ var.fees }}</li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get Details</button>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="mt-4">No Result Found</div>
+{% endif %}
+<script>
+  function getdetails(number) {
+    xhttp = new XMLHttpRequest()
+
+    xhttp.onload = function () {
+      document.getElementById(number).innerHTML = this.responseText
+      document.getElementById(number).classList.remove("card", "mb-4")
+      document.getElementById(number).style.width = "Auto"
+    }
+    url = "/gethospitaldetails/".concat(number)
+    xhttp.open("GET", url, true)
+    xhttp.send()
+  }
+</script>
+
+{% endblock %}

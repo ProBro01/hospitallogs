@@ -1,0 +1,61 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<style>
+    
+</style>
+<div class="justifier bg-dark head-div">
+    <div class="mycontainer4">
+    <div class="myflex2 justifier">
+    <h1 class="text-white heading-about-us">About us</h1>
+    </div>
+    <i id='close-ico' style="color: white; padding: 25px 0px 0px 0px;"><img src="/static/arrowhead.png"></i>
+    </div>
+</div>
+<div style="height:71.5vh; overflow:scroll">
+<div class="cont-div">
+    <div class="mycontainer3 main-cont">
+        <div class="myflex backanimate">
+            <h3 class="animate4">Key Features</h3>
+            <ul class="list-animation" style="padding: 0px;">
+                <li>hello</li>
+                <li>hello</li>
+                <li>hello</li>
+                <li>hello</li>
+                <li>hello</li>
+                <li>hello</li>
+            </ul>
+        </div>
+        <p class="justifier">
+            endis commodi repellendus atque sit voluptas esse possimus! Impedit, fugiat. Suscipit autem sunt laborum. In porro nemo libero fugit suscipit corrupti officiis veniam, nihil delectus nulla velit nam illo rerum molestias nobis placeat animi eveniet ab debitis saepe, quisquam sit? Rerum, culpa? Iste, nisi non recusandae laboriosam voluptatibus repellendus, assumenda facere cumque molestiae culpa ab? Neque culpa at soluta, deleniti quasi quibusdam cupiditate aspernatur ratione pariatur ullam recusandae consequatur. Laudantium beatae nemo odio, explicabo mollitia et nihil sint ducimus <br><br>voluptatibus optio, alias ut facilis impedit quasi. Sed voluptate vitae consequatur molestiae odio neque quam est enim facere eos officia necessitatibus, optio consectetur veritatis, facilis obcaecati ea nam architecto illum corporis. Quas voluptatum illo, voluptas ipsa nihil, nemo neque alias a nulla, nam mollitia? Possimus illum consequuntur odit adipisci hic minus, molestias commodi aspernatur iste laborum sit ducimus maxime et esse eius reiciendis vel fuga assumenda maiores fugiat ab<br><br> explicabo quae rerum ad. Minima quos porro esse aperiam ex veritatis, id eos optio soluta expedita voluptate laboriosam exercitationem cupiditate quasi molestiae non, nulla nesciunt sit minus a voluptatem consectetur facilis? Ab magni quae suscipit beatae eaque saepe, facilis accusamus vitae veritatis dolorum esse quis? Vero, ratione debitis illo eligendi atque nemo dicta explicabo molestias accusamus at fuga rerum.<br><br>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet adipisci quo nisi quia necessitatibus nobis vitae impedit. Blanditiis id voluptatum sapiente quisquam tenetur eius autem modi maiores delectus vero. Minus!
+        </p>
+        <div class="myflex backanimate">
+            <h3 class="animate4">Top Customer</h3>
+            <ul style="padding: 0px;">
+                <li class="list-animation">Fortis</li>
+                <li class="list-animation">Mahatma Gandhi</li>
+                <li class="list-animation">Paras</li>
+                <li class="list-animation">AIIMS</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    // help to make the heading sticky or static
+    var issticky = 1
+    var closeaboutus = document.getElementById('close-ico')
+    closeaboutus.addEventListener('click', function(){
+        console.log('pressed'+issticky)
+        if (issticky == 0){
+            document.querySelectorAll('.head-div')[0].style.position='sticky'
+            issticky = 1
+        }
+        else if(issticky == 1){
+            document.querySelectorAll('.head-div')[0].style.position='static'
+            issticky = 0
+        }
+    })
+</script>
+{% endblock %} 

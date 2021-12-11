@@ -1,0 +1,160 @@
+{% extends 'navbar.html' %}
+
+{% block title %}
+| Index
+{% endblock %}
+
+{% block content %}
+
+<style>
+    
+</style>
+<div class="">
+    <div
+        style="background-image:url('/static/hospital1formainpage.jpg'); background-attachment: fixed;height: 80vh; width: 98.9vw; background-size: cover; display: flex; justify-content: center;">
+        <div class="heartpump"></div>
+    </div>
+    <div style="display: flex; justify-content: center; background-color: white; position:absolute;left: 0px; height: 17vh; width: 98.9vw;"
+        id='div-for-head'>
+        <h1 style="color: rgb(66, 66, 66);font-size: 100px;background-color: white;position:absolute; left: 0px;"
+            id='heading-for-main'>HOSPITALLOGS</h1>
+    </div>
+    <div
+        style="background-image:url('/static/hospital2formainpage.jpg'); background-attachment: fixed;height: 90vh; width: 98.9vw; background-size: cover; display: flex; justify-content: center; align-items: center;">
+    </div>
+    <section>
+        <div
+            style="color: white;background-image: linear-gradient(to bottom right, #4fe9be, #1f022b);background-attachment: fixed;height: 90vh; width: 98.9vw;display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: center;">
+                <h1 style="margin: 10px;">Get A Look on Various Hospitals</h1>
+            </div>
+            <div style="display: flex; justify-content: center;margin-top: 20px;">
+                <div style="display: grid; grid-template-columns: auto auto auto; column-gap: 70px;">
+                    <div class="card mb-4 making-visible" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;"
+                        id="{{var.id}}">
+                        <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ var.name }}</h5>
+                            <div class="card-text">
+                                <ul>
+                                    <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{
+                                        var.Location.Pincode }}</li>
+                                    <li>Fees : {{ var.fees }}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get
+                                Details</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 making-visible" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;"
+                        id="{{var.id}}">
+                        <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ var.name }}</h5>
+                            <div class="card-text">
+                                <ul>
+                                    <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{
+                                        var.Location.Pincode }}</li>
+                                    <li>Fees : {{ var.fees }}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get
+                                Details</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 making-visible" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;"
+                        id="{{var.id}}">
+                        <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ var.name }}</h5>
+                            <div class="card-text">
+                                <ul>
+                                    <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{
+                                        var.Location.Pincode }}</li>
+                                    <li>Fees : {{ var.fees }}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get
+                                Details</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 making-visible" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;"
+                        id="{{var.id}}">
+                        <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ var.name }}</h5>
+                            <div class="card-text">
+                                <ul>
+                                    <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{
+                                        var.Location.Pincode }}</li>
+                                    <li>Fees : {{ var.fees }}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get
+                                Details</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 making-visible" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;"
+                        id="{{var.id}}">
+                        <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ var.name }}</h5>
+                            <div class="card-text">
+                                <ul>
+                                    <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{
+                                        var.Location.Pincode }}</li>
+                                    <li>Fees : {{ var.fees }}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get
+                                Details</button>
+                        </div>
+                    </div>
+                    <div class="card mb-4 making-visible" style="width: 18rem; box-shadow: 0px 0px 10px red; padding: 20px;"
+                        id="{{var.id}}">
+                        <img class="card-img-top" src="/media/{{ var.hospitalimage }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ var.name }}</h5>
+                            <div class="card-text">
+                                <ul>
+                                    <li>Location : {{ var.Location.address }}-{{ var.Location.city }}-{{
+                                        var.Location.Pincode }}</li>
+                                    <li>Fees : {{ var.fees }}</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="getdetails({{ var.id }})">Get
+                                Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+<script>
+    var makesession = "{{ makesession }}"
+    if (makesession == "1") {
+        document.cookie = "session_id={{ session_id }}; expires=Friday, December 17, 2021 at 9:06:43 PM"
+    }
+    var heading = document.getElementById('heading-for-main')
+    window.addEventListener("scroll", function () {
+        let value = window.scrollY
+        if ((value + 700.737) < window.innerWidth) {
+            heading.style.left = (value / 2) + 'px'
+        }
+        if(value < 800){
+            var tags = document.querySelectorAll(".card")
+            for (var a = 0; a < tags.length; a++){
+                tags[a].style.visibility='hidden'
+                tags[a].classList.remove("animating")
+            }
+        }
+        if(value<=1024 && value>=900 || value >1200){
+            var tags = document.querySelectorAll(".card")
+            for (var a = 0; a < tags.length; a++){
+                tags[a].style.visibility='visible'
+                tags[a].classList.add("animating")
+            }
+        }
+    })
+</script>
+{% endblock %}

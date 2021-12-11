@@ -1,0 +1,41 @@
+{% extends "navbar.html" %}
+
+{% block title %}
+
+| Login
+
+{% endblock %}
+
+{% block login %}
+
+<div class="myflex r-myflex-bg myflex-dim-whole">
+    <h1 style="color: black;">HOPITALLOGS</h1>
+    <form method="POST" action="/login/" onsubmit="return buttondisable()">
+        {% csrf_token %}
+        <div class="myflex myflex-dim-part">
+            <span class="labelclass">Username</span>
+            {{ form.username }}
+        </div>
+        <div class="myflex myflex-dim-part">
+            <span class="labelclass">Password</span>
+            {{ form.password }}
+        </div>
+        <div class="myflexbutton">
+        <div>
+        <button class="btn btn-primary" type="submit" id="loginbutton">Login</button>
+        </div>
+        <div class="forgotpass">
+        <a href="/forgotpassword/" class="fplink">Forgot Password</a>
+        </div>
+        </div>
+    </form>
+</div>
+<!-- forgot password /forgotpassword/ -->
+<script>
+    function buttondisable(){
+        document.getElementById("loginbutton").diabled = true
+        return true
+    }
+</script>
+
+{% endblock %}
