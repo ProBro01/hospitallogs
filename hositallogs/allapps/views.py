@@ -321,7 +321,7 @@ def profile(request):
         return redirect("/")
 
 
-def editdoctor(request):
+def adddoctor(request):
     if request.method == "POST":
         content = json.loads(request.body.decode())
         session_id = request.COOKIES.get("session_id")
@@ -334,6 +334,27 @@ def editdoctor(request):
     else:
         return redirect("/")
 
+def editdoctorprofile(request, docid):
+    if request.method == "POST":
+        session_id = request.COOKIES.get('session_id')
+        print(session_id)
+        if session_id == None:
+            return redirect("/")
+        session = models.sessions.objects.get(sessionToken=session_id)
+        user = session.user
+        doctor = models.Doctor.objects.get(id=docid)
+        doctorhospital = doctor.hospital
+        if user == doctorhospital:
+            doctor.Name = request.POST.get('profiledocname')
+            doctor.Qualification = request.POST.get('profiledocqualification')
+            doctor.Specilization = request.POST.get('profiledocspecilization')
+            doctor.experience = request.POST.get('profiledocexperience')
+            doctor.starttime = request.POST.get('profiledocstarttime')
+            doctor.endtime = request.POST.get('profiledocendtime')
+            doctor.save()
+            return redirect("/profile/")
+        else:
+            return render("<h1>403 Forbidden Access</h1>")
 
 def removedoctor(request):
     try:

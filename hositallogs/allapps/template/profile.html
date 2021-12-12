@@ -94,36 +94,46 @@
                 <div class="doc-img myflex">
                     <img src="/media/{{ var.picture }}" height="200px" width="300px">
                 </div>
+                <!-- nomenclature profiledoc{} -->
+                <form action="/editdoctorprofile/{{var.id}}/" method="POST">
+                    {% csrf_token %}
                     <div class="doc-profile-opt">
                         <label class="myflex-lables">Name : </label>
                         <div>
-                            <input value="{{ var.Name }}" class="doc-profile-input">
+                            <input value="{{ var.Name }}" name="profiledocname" class="doc-profile-input">
                         </div>
                         <label class="myflex-labels">Qualification : </label>
                         <div>
-                            <input value="{{ var.Qualification }}" class="doc-profile-input">
+                            <input value="{{ var.Qualification }}" name="profiledocqualification"
+                                class="doc-profile-input">
                         </div>
-                        <label class="myflex-labels">Specilication : </label>
+                        <label class="myflex-labels">Specilization : </label>
                         <div>
-                            <input value="{{ var.Specilization }}" class="doc-profile-input">
+                            <input value="{{ var.Specilization }}" name="profiledocspecilization"
+                                class="doc-profile-input">
                         </div>
                         <label class="myflex-labels">Experience : </label>
                         <div>
-                            <input value="{{ var.experience }}" class="doc-profile-input">
+                            <input value="{{ var.experience }}" name="profiledocexperience" class="doc-profile-input">
                         </div>
                         <label class="myflex-labels">Startingtime : </label>
                         <div>
-                            <input value="{{ var.startingtime }}" class="doc-profile-input">
+                            <input value="{{ var.startingtime }}" name="profiledocstarttime" class="doc-profile-input">
                         </div>
                         <label class="myflex-labels">Endingtime : </label>
                         <div>
-                            <input value="{{ var.endingtime }}" class="doc-profile-input">
+                            <input value="{{ var.endingtime }}" name="profiledocendtime" class="doc-profile-input">
                         </div>
                     </div>
                     <div class="justifier-right chg-img">
-                        <div></div>
-                        <input type="file" value="Change image">
+                        <div><button class="btn btn-primary">Edit Doctor</button></div>
+                        <div>
+                            <button class="btn btn-primary" type="button"
+                                onclick="document.getElementById('img-change-input').click()">Change Image</button>
+                            <input type="file" id="img-change-input" value="Change image" style="display: none;">
+                        </div>
                     </div>
+                </form>
             </div>
         </div>
         {% endfor %}
@@ -132,10 +142,10 @@
     <!-- add button -->
     <div class="mb-3">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add Doctor
+        <div class="add-doc-button">
+        <button type="button" class="add-doc-button-p" data-bs-toggle="modal" data-bs-target="#exampleModal">
         </button>
-
+        </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -179,11 +189,17 @@
         </div>
     </div>
     <div class="end-button">
-        <a href="/logout/"><button type="button" class="btn btn-danger">Logout</button></a>
-        <button class="btn btn-success" type="submit" form="editform">Save Changes</button>
-    </div>
-    <div class="save-prompt myflex justifier"><button class="save-prompt-p" type="submit" form="editform"></button></div>
+        <div class="myflex2 justifier-left">
+        <button type="button" class="btn btn-danger"><a href="/logout/"
+                style="text-decoration: none; color: white">Logout</a></button>
+            </div>
+            <div class="myflex2 justifier-right">
+        <button class="btn btn-secondary" type="submit" form="editform">Save Changes</button>
+        </div>
+    </di>
 </div>
+    <div class="save-prompt myflex justifier"><button class="save-prompt-p" type="submit" form="editform"></button>
+    </div>
 <script>
     // creating a xmlhttprequest to send the data
     var doctorelementid = []
@@ -213,7 +229,7 @@
         xhttp.onload = function () {
             document.getElementById("adddoctor").disabled = false
         }
-        xhttp.open("POST", "/editdoctor/", true)
+        xhttp.open("POST", "/adddoctor/", true)
         xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
         // disable the button 
         document.getElementById("adddoctor").disabled = true
@@ -284,22 +300,38 @@
             signoutpromptp.innerHTML = ''
         })
     }
-    function savepromptf(){
+    function savepromptf() {
         var saveprompt = document.querySelectorAll(".save-prompt")[0]
         var savepromptp = document.querySelectorAll(".save-prompt-p")[0]
-        saveprompt.addEventListener("mouseover", function(){
-            setTimeout(function(){
-                if(saveprompt.clientWidth == 70){
+        saveprompt.addEventListener("mouseover", function () {
+            setTimeout(function () {
+                if (saveprompt.clientWidth == 70) {
                     savepromptp.innerHTML = 'Save'
                     savepromptp.style.color = 'white'
                 }
             }, 300)
         })
-        saveprompt.addEventListener("mouseleave", function(){
-            savepromptp.innerHTML=''
+        saveprompt.addEventListener("mouseleave", function () {
+            savepromptp.innerHTML = ''
+        })
+    }
+    function adddocf(){
+        var adddoc = document.querySelectorAll('.add-doc-button')[0]
+        var adddocp = document.querySelectorAll('.add-doc-button-p')[0]
+        adddoc.addEventListener("mouseover", function(){
+            setTimeout(function(){
+                if (adddoc.clientWidth == 70){
+                    adddocp.innerHTML = 'Add Doctor'
+                    adddocp.style.color = "white"
+                }
+            }, 300)
+        })
+        adddoc.addEventListener("mouseleave", function(){
+            adddocp.innerHTML = ''
         })
     }
     signoutpromptf()
     savepromptf()
+    adddocf()
 </script>
 {% endblock %}

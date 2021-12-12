@@ -15,13 +15,14 @@ urlpatterns = [
     path("editprofile/", views.editprofile, name="editprofile"),
     path("searchresult/", views.search, name="search"),
     path("gethospitaldetails/<int:number>/", views.getdetails, name="getdetails"),
-    path("editdoctor/", views.editdoctor, name="editdocs"),
+    path("adddoctor/", views.adddoctor, name="adddocs"),
     path("removedoctor/", views.removedoctor, name="removedocs"),
     path("forgotpassword/", views.forgotpassword, name="forgotpassword"),
     path("resetpassword/<str:resetid>/", views.resetpassword, name="resetpassword"),
     path("otppage/", views.otppage, name="otppage"),
     path("searchform/", views.searchform, name="searchform"),
-    path("aboutus/", views.aboutus, name="aboutus")
+    path("aboutus/", views.aboutus, name="aboutus"),
+    path("editdoctorprofile/<int:docid>/", views.editdoctorprofile, name="editdoctor")
 ]
 
 if settings.DEBUG:

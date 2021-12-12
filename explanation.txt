@@ -25,3 +25,6 @@ make changes in Doctors Details
 =========================================================================================================
 after the otp check and login clear the otp to null in the session id and also clear the is_semiauthentic
 =========================================================================================================
+
+
+in the profile page there are form to change the doctor details but we can change a doctor at a time so handle it with care(make it for many doctor at time) -- i have used json approch there
