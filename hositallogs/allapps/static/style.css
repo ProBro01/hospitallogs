@@ -290,24 +290,27 @@ p{
   grid-template-rows: 50% 50%;
 }
 .profile-change-option{
-  margin: 100px 0px 0px 0px;
+  margin: 120px 0px 0px 0px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  grid-template-columns: 200px auto;
   row-gap: 10px;
+  column-gap: 20px;
   /* grid-template-rows: ; */
 }
 .my-input-profile{
   height: 50px;
-  width: 200px;
+  width: 400px;
   border-top: 5px;
   border: none;
   outline: none;
   border-bottom: 2px solid rgb(235, 131, 235);
-  transition: border 0.5s linear;
-  transition: width 0.5s linear;
+  transition: border 0.1s linear;
+  transition: width 0.1s linear;
 }
 .my-input-profile:focus {
-  width: 250px;
+  box-shadow: 0px 0px 10px black;
+  width: 600px;
   border-bottom: 2px solid purple;
 }
 .signout-prompt{
@@ -325,4 +328,93 @@ p{
   transition: width 0.3s;
   width: 70px;
   background-color: rgba(221, 52, 52, 0.9);
+}
+.info-lable{
+  color: black;
+  font-weight: bold;
+}
+.info-lable:hover{
+  color: rgb(238, 77, 77);
+}
+.justifier-right{
+  justify-content: right;
+}
+.myflex-labels{
+  display: flex;
+  align-items: center
+}
+.discription-text{
+  border-radius: 2px;
+  width: 400px;
+  outline: none;
+  border: 1px solid rgb(235, 131, 235);
+}
+.discription-text:focus{
+  border: 1px solid purple;
+  box-shadow: 0px 0px 5px purple;
+}
+.doctor-list-div{
+  margin: 0px 20px 0px 20px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
+}
+.doc-img{
+  margin: 0px 0px 10px 0px;
+}
+.doc-profile-opt{
+  display: grid;
+  grid-template-columns: auto auto;
+  row-gap: 10px;
+}
+.doc-profile-input{
+  border: none;
+  border-bottom: 2px solid rgba(108, 211, 108, 0.5);
+  outline: none;
+}
+.doc-profile-input:focus{
+  border-bottom: 2px solid green;
+}
+.chg-img{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 20px 0px 0px 0px;
+}
+.chg-img > input{
+  z-index: 1000;
+  width: 150px;
+}
+.chg-img > input::file-selector-button{
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+}
+.end-button{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 30px 0px 30px 0px;
+}
+.save-prompt{
+  height: 50px;
+  width: 20px;
+  position: fixed;
+  bottom: 400px;
+  background-color: rgba(108, 211, 108, 0.5);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: width 0.3s;
+  z-index: 2000;
+
+}
+.save-prompt:hover{
+  transition: width 0.3s;
+  width: 70px;
+  background-color: rgba(21, 121, 21, 0.801);
+}
+.save-prompt-p{
+  margin: 0;
+  background: none;
+  border: none;
 }

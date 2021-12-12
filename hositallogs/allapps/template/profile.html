@@ -8,7 +8,8 @@
 
 {% block content %}
 <div class="myflex3">
-    <div class="signout-prompt myflex justifier"><a class="signout-prompt-p" style="text-decoration: none;" href="/logout/"></a></div>
+    <div class="signout-prompt myflex justifier"><a class="signout-prompt-p" style="text-decoration: none;"
+            href="/logout/"></a></div>
     <form method="POST" action="/editprofile/" id="editform">
         {% csrf_token %}
         <ul style="padding: 0px;">
@@ -25,78 +26,108 @@
             <!-- <div style="display:flex">
                 <img src="/static/editpencile.png" height="30" width="30" onclick="changename()">
             </div> -->
+            <!-- nomenclature idprofile{} -->
             <div class="myflex justifier" style="align-items: center;">
-                <div class="" style="width: 600px;">
-                    <div class="profile-change-option justifier" style="background-color: rgb(221, 219, 219); box-shadow:0px 0px 10px green;">
-                        <div class="myflex justifier">
-                            <span>Username : </span>
+                <div class="" style="width: 900px;">
+                    <div class="profile-change-option"
+                        style="background-color: rgb(240, 233, 233); box-shadow:0px 0px 10px green;">
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="idprofileusername">Username : </label>
                         </div>
                         <div>
-                            <input type="text" value="{{ user.username }}" class="my-input-profile" name="usernameedit">
+                            <input type="text" value="{{ user.username }}" class="my-input-profile"
+                                id="idprofileusername" name="usernameedit">
                         </div>
-                        <div class="myflex">
-                            <span class="" id="">Address : </span>
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="idprofileaddress">Address : </label>
                         </div>
                         <div class="">
-                            <input type="text" class="my-input-profile" value="{{ user.Location.address }}"
-                                name="addressedit">
+                            <input type="text" class="my-input-profile" id="idprofileaddress"
+                                value="{{ user.Location.address }}" name="addressedit">
                         </div>
-                        <div class="myflex">
-                            <span class="" id="">City : </span>
-                        </div>
-                        <div class="">
-                            <input type="text" class="my-input-profile" value="{{ user.Location.city }}"
-                                name="cityedit">
-                        </div>
-                        <div>
-                            <span class="myflex " id="">Pincode : </span>
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="idprofilecity">City : </label>
                         </div>
                         <div class="">
-                            <input type="text" class="my-input-profile" value="{{ user.Location.Pincode }}"
-                                name="pincodeedit">
+                            <input type="text" class="my-input-profile" id="idprofilecity"
+                                value="{{ user.Location.city }}" name="cityedit">
                         </div>
-                        <div class="myflex">
-                            <span>Fees : </span>
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="idprofilepincode">Pincode : </label>
                         </div>
-                        <div>
-                            <input type="text" class="my-input-profile" value="{{ user.fees }}" name="feeedit">
+                        <div class="">
+                            <input type="text" class="my-input-profile" id="idprofilepincode"
+                                value="{{ user.Location.Pincode }}" name="pincodeedit">
                         </div>
-                        <div class="myflex">
-                            <span>Number Of Beds : </span>
-                        </div>
-                        <div>
-                            <input type="number" class="my-input-profile" value="{{ user.numberofbeds }}"
-                                name="numberofbedsedit">
-                        </div>
-                        <div class="myflex">
-                            <span>Discription : </span>
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="idprofilefee">Fees : </label>
                         </div>
                         <div>
-                            <textarea name="discriptionedit" id="hospitaldiscription" cols="30"
-                                rows="10">{{ user.discriptions }}</textarea>
+                            <input type="text" class="my-input-profile" id="idprofilefee" value="{{ user.fees }}"
+                                name="feeedit">
+                        </div>
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="idprofilenumofbed">Number Of Beds : </label>
+                        </div>
+                        <div>
+                            <input type="number" class="my-input-profile" id="idprofilenumofbed"
+                                value="{{ user.numberofbeds }}" name="numberofbedsedit">
+                        </div>
+                        <div class="myflex-labels justifier-right">
+                            <label class="info-lable" for="hospitaldiscription">Discription : </label>
+                        </div>
+                        <div>
+                            <textarea name="discriptionedit" class="discription-text" id="hospitaldiscription"
+                                rows="5">{{ user.discriptions }}</textarea>
                         </div>
                     </div>
                 </div>
             </div>
         </ul>
     </form>
-    {% for var in doctorlist %}
+    <div class="doctor-list-div">
+        {% for var in doctorlist %}
 
-    <div class="card mb-3" id="{{ var.id }}">
-        <button class="btn btn-warning mb-2" onclick="removedoctor({{ var.id }})">Remove Doctor</button>
-        <div class="card-body">
-            <ul>
-                <li>Name : {{ var.Name }}</li>
-                <li>Qualification : {{ var.Qualification }}</li>
-                <li>Specilication : {{ var.Specilization }}</li>
-                <li>Experience : {{ var.experience }}</li>
-                <li>Startingtime : {{ var.startingtime }}</li>
-                <li>Endingtime : {{ var.endingtime }}</li>
-            </ul>
+        <div class="card" id="{{ var.id }}">
+            <button class="btn btn-success mb-2" onclick="removedoctor({{ var.id }})">Remove Doctor</button>
+            <div class="card-body">
+                <div class="doc-img myflex">
+                    <img src="/media/{{ var.picture }}" height="200px" width="300px">
+                </div>
+                    <div class="doc-profile-opt">
+                        <label class="myflex-lables">Name : </label>
+                        <div>
+                            <input value="{{ var.Name }}" class="doc-profile-input">
+                        </div>
+                        <label class="myflex-labels">Qualification : </label>
+                        <div>
+                            <input value="{{ var.Qualification }}" class="doc-profile-input">
+                        </div>
+                        <label class="myflex-labels">Specilication : </label>
+                        <div>
+                            <input value="{{ var.Specilization }}" class="doc-profile-input">
+                        </div>
+                        <label class="myflex-labels">Experience : </label>
+                        <div>
+                            <input value="{{ var.experience }}" class="doc-profile-input">
+                        </div>
+                        <label class="myflex-labels">Startingtime : </label>
+                        <div>
+                            <input value="{{ var.startingtime }}" class="doc-profile-input">
+                        </div>
+                        <label class="myflex-labels">Endingtime : </label>
+                        <div>
+                            <input value="{{ var.endingtime }}" class="doc-profile-input">
+                        </div>
+                    </div>
+                    <div class="justifier-right chg-img">
+                        <div></div>
+                        <input type="file" value="Change image">
+                    </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-
-    {% endfor %}
     <div id="doctorlist"></div>
     <!-- add button -->
     <div class="mb-3">
@@ -147,14 +178,14 @@
             </div>
         </div>
     </div>
-    <a href="/logout/"><button type="button" class="btn btn-danger">Logout</button></a>
-    <button class="btn btn-success" type="submit" form="editform">Save Changes</button>
+    <div class="end-button">
+        <a href="/logout/"><button type="button" class="btn btn-danger">Logout</button></a>
+        <button class="btn btn-success" type="submit" form="editform">Save Changes</button>
+    </div>
+    <div class="save-prompt myflex justifier"><button class="save-prompt-p" type="submit" form="editform"></button></div>
 </div>
 <script>
     // creating a xmlhttprequest to send the data
-    function idgenerator(doctor) {
-        doctorlist
-    }
     var doctorelementid = []
     var ids = ["floatingdocname", "floatingsubject", "floatingqualification", "floatingexp", "floatingstarttiming", "floatingendtiming"]
     class Doctor {
@@ -238,21 +269,37 @@
         xhttp2.send(form)
         document.getElementById(doctorid).remove()
     }
-    function signoutpromptf(){
+    function signoutpromptf() {
         var signoutprompt = document.querySelectorAll('.signout-prompt')[0]
         var signoutpromptp = document.querySelectorAll('.signout-prompt-p')[0]
-        signoutprompt.addEventListener("mouseover", function(){
-      setTimeout(function(){
-      if(signoutprompt.clientWidth == 70){
-        signoutpromptp.innerHTML = 'Sign Out'
-        signoutpromptp.style.color="white"
-      }
-    }, 290)
-    })
-    signoutprompt.addEventListener('mouseleave', function(){
-        signoutpromptp.innerHTML = ''
-    })
+        signoutprompt.addEventListener("mouseover", function () {
+            setTimeout(function () {
+                if (signoutprompt.clientWidth == 70) {
+                    signoutpromptp.innerHTML = 'Sign Out'
+                    signoutpromptp.style.color = "white"
+                }
+            }, 300)
+        })
+        signoutprompt.addEventListener('mouseleave', function () {
+            signoutpromptp.innerHTML = ''
+        })
+    }
+    function savepromptf(){
+        var saveprompt = document.querySelectorAll(".save-prompt")[0]
+        var savepromptp = document.querySelectorAll(".save-prompt-p")[0]
+        saveprompt.addEventListener("mouseover", function(){
+            setTimeout(function(){
+                if(saveprompt.clientWidth == 70){
+                    savepromptp.innerHTML = 'Save'
+                    savepromptp.style.color = 'white'
+                }
+            }, 300)
+        })
+        saveprompt.addEventListener("mouseleave", function(){
+            savepromptp.innerHTML=''
+        })
     }
     signoutpromptf()
+    savepromptf()
 </script>
 {% endblock %}
