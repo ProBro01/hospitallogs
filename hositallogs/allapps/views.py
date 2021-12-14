@@ -68,9 +68,14 @@ def getPassword():
 
 
 def index(request):
+    allhospital = models.Hospital.objects.all()
+    randomhopital = []
+    for var in range(3):
+        randomhopital.append(allhospital[var])
     if request.COOKIES.get("session_id") is not None:
         context = {
-            "makesession": 0
+            "makesession": 0,
+            "randomhospital" : randomhopital,
         }
         return render(request, "index.html", context)
     session_cookie = generatesession_cookies()
@@ -80,6 +85,7 @@ def index(request):
         "session_id": session_cookie,
         "makesession": 1,
         "expiredate": "Saturday, December 11, 2021 at 2:34:52 PM",
+        "randomhospital" : randomhopital,
     }
     return render(request, "index.html", context)
 
